@@ -7,7 +7,7 @@ This guide demonstrates how to implement the VAPI AI Assistant and customize its
 ## VAPI CDN Folder Location
 
 The VAPI CDN file is located at the following path:
-```C:\Users\Production\Documents\Audree\ai-assistant\public\assets\static\assistant-cdn.js
+```C:\Users\Production\Documents\Audree\ai-assistant\public\assets\static\assistant-cdn.js```
 
 Make sure to use this local file in your project to ensure better control over the widget’s appearance and behavior.
 
@@ -52,7 +52,7 @@ useEffect(() => {
     document.body.removeChild(script);
   };
 }, []);
-
+```
 
 ## Customization Tips
 
@@ -64,7 +64,7 @@ useEffect(() => {
 
 For the latest updates, additional configurations, and access to the source code, visit the official VAPI AI Assistant GitHub repository:
 
-[GitHub Repository Link]([https://github.com/your-username/vapi-ai-assistant](https://github.com/lloyd-2340/ai-assistant))
+[GitHub Repository Link]([[https://github.com/your-username/vapi-ai-assistant](https://github.com/lloyd-2340/ai-assistant)](https://github.com/lloyd-2340/ai-assistant))
 
 ## Conclusion
 
