@@ -17,8 +17,8 @@ To display the VAPI AI Assistant on your desired page, include the following sni
 
 ```javascript
 const vapiInstanceRef = useRef(null);
-const assistant = "d7eacab2-e657-4f29-9840-c6188501c3af"; 
-const apiKey = "9d5b5375-1873-4504-9197-529af26ab5a5"; 
+const assistant = "ASSISTANT ID"; 
+const apiKey = "<VAPI API KEY";  
 const buttonConfig = {
   position: "bottom-right", 
   offset: "10px", 
