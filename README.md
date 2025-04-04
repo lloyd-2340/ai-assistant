@@ -1,71 +1,72 @@
-# Getting Started with Create React App
+# VAPI AI Assistant Implementation Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This guide demonstrates how to implement the VAPI AI Assistant and customize its widget UI. The UI can be further improved depending on how you leverage the VAPI CDN. While you can download the VAPI CDN and copy the code to your project, it's important to note that using the CDN link directly may limit customization options for the design.
 
-In the project directory, you can run:
+## VAPI CDN Folder Location
 
-### `npm start`
+The VAPI CDN file is located at the following path:
+```C:\Users\Production\Documents\Audree\ai-assistant\public\assets\static\assistant-cdn.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Make sure to use this local file in your project to ensure better control over the widget’s appearance and behavior.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Example Implementation
 
-### `npm test`
+To display the VAPI AI Assistant on your desired page, include the following snippet of code in the appropriate section of your HTML or JavaScript:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+const vapiInstanceRef = useRef(null);
+const assistant = "d7eacab2-e657-4f29-9840-c6188501c3af"; 
+const apiKey = "9d5b5375-1873-4504-9197-529af26ab5a5"; 
+const buttonConfig = {
+  position: "bottom-right", 
+  offset: "10px", 
+  width: "50px", 
+  height: "50px", 
+};
 
-### `npm run build`
+useEffect(() => {
+  // Create script only once when the component mounts
+  const script = document.createElement("script");
+  script.src = "/assets/static/assistant-cdn.js";
+  script.defer = true;
+  script.async = true;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  script.onload = () => {
+    if (window.vapiSDK && !vapiInstanceRef.current) {
+      // Create instance only once and save it in the ref
+      vapiInstanceRef.current = window.vapiSDK.run({
+        apiKey,
+        assistant,
+        config: buttonConfig,
+      });
+    }
+  };
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  // Append the script tag to the body
+  document.body.appendChild(script);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  // Cleanup the script tag when the component unmounts
+  return () => {
+    document.body.removeChild(script);
+  };
+}, []);
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Customization Tips
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **UI Customization**: You can adjust the look and feel of the VAPI widget by modifying the styles within the CDN code in your project. This allows you to fine-tune the design to better integrate the assistant into your website’s overall aesthetic and user experience.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Local Setup**: By using the local CDN, you gain more flexibility in customization compared to using a direct CDN link, which has limitations in terms of adjusting design elements.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## GitHub Repository
 
-## Learn More
+For the latest updates, additional configurations, and access to the source code, visit the official VAPI AI Assistant GitHub repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[GitHub Repository Link]([https://github.com/your-username/vapi-ai-assistant](https://github.com/lloyd-2340/ai-assistant))
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Conclusion
 
-### Code Splitting
+By following the steps outlined above, you can successfully implement and customize the VAPI AI Assistant in your project. For further enhancements, refer to the VAPI documentation for additional configuration options.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# ai-assistant
